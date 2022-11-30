@@ -8,7 +8,7 @@ import Image from "next/image";
 import GoogleButton from "react-google-button";
 import { useRouter } from "next/router";
 
-const signup = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
@@ -159,4 +159,4 @@ useEffect(() => {
   );
 };
 
-export default signup;
+export default Signup;

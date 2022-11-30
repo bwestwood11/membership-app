@@ -2,7 +2,7 @@ import React from "react";
 import { useUserAuth } from "../context/UserAuthContext";
 import { withProtected } from "../hooks/hook";
 
-const profile = () => {
+const Profile = () => {
   const { user, logOut } = useUserAuth();
 
   const handleLogOut = async () => {
@@ -31,4 +31,4 @@ const profile = () => {
   );
 };
 
-export default withProtected(profile);
+export default withProtected(Profile);

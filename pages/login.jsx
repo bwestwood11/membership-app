@@ -7,7 +7,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import Link from "next/link";
 import { Alert } from "react-bootstrap";
 
-const login = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
@@ -128,4 +128,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
