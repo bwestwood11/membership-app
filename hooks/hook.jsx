@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { useUserAuth } from "../context/UserAuthContext";
 
 export function withPublic(Component) {
@@ -7,11 +7,14 @@ export function withPublic(Component) {
 		const auth = useUserAuth();
 		const router = useRouter();
 
-		if (auth.user) {
+	useEffect(() => {if (auth.user) {
 			router.replace("/");
 			return <h1>Loading...</h1>;
+			return <Component auth={auth} {...props} />;
 		}
-		return <Component auth={auth} {...props} />;
+	}, [])
+		
+		
 	};
 }
 
