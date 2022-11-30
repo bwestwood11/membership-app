@@ -5,7 +5,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { useRouter } from "next/router";
 
 const Profile = () => {
-  const { user, logOut } = useUserAuth();
+  const { children } = useUserAuth();
   const auth = useUserAuth();
   const router = useRouter()
 
@@ -29,8 +29,6 @@ const Profile = () => {
     <div className="pt-36 w-full">
       <div>
         <h1 className="text-center text-6xl font-bold">Hello Welcome</h1>
-       
-        <p className="text-center">{user.email}</p>
       </div>
       <button
         className="justify-center text-xl bg-[#BF202F] text-white py-3 px-3 rounded-lg hover:scale-110 ease-in duration-300"
