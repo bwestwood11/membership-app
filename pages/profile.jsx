@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useUserAuth } from "../context/UserAuthContext";
-import { withProtected } from "../hooks/hook";
+
+
+import { useRouter } from "next/router";
 
 const Profile = () => {
   const { user, logOut } = useUserAuth();
+  const auth = useUserAuth();
+  const router = useRouter()
 
   const handleLogOut = async () => {
     try {
@@ -13,12 +17,19 @@ const Profile = () => {
     }
   };
 
+  useEffect(() => {
+    if (!auth.user) {
+      router.replace("/login")
+    } else {null}
+  }, [auth.user])
+  
+
 
   return (
     <div className="pt-36 w-full">
       <div>
         <h1 className="text-center text-6xl font-bold">Hello Welcome</h1>
-        <p className="text-center">{user.displayName}</p>
+       
         <p className="text-center">{user.email}</p>
       </div>
       <button
@@ -31,4 +42,4 @@ const Profile = () => {
   );
 };
 
-export default withProtected(Profile);
+export default (Profile);
