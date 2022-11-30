@@ -7,10 +7,9 @@ export function withPublic(Component) {
 		const auth = useUserAuth();
 		const router = useRouter();
 
-	useEffect(() => {if (auth.user) {
+	useEffect(() => {
+		if (auth.user) {
 			router.replace("/");
-			return <h1>Loading...</h1>;
-			return <Component auth={auth} {...props} />;
 		}
 	}, [])
 		
@@ -23,10 +22,14 @@ export function withProtected(Component) {
 		const auth = useUserAuth();
 		const router = useRouter();
 
-		if (!auth.user) {
+		useEffect(() => {
+		  if (!auth.user) {
 			router.replace("/login");
-			return <h1>Loading...</h1>;
+			}
+		
+		
+		}, [])
+		 
 		}
 		return <Component auth={auth} {...props} />;
 	};
-}
