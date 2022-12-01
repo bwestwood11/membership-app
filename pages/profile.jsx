@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useUserAuth } from "../context/UserAuthContext";
+import { useUserAuth, onAuthStateChanged } from "../context/UserAuthContext";
 
 
 import { useRouter } from "next/router";
 
 const Profile = () => {
-  const { children } = useUserAuth();
+  const { user, logOut } = useUserAuth();
   const auth = useUserAuth();
   const router = useRouter()
 
