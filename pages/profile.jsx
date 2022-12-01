@@ -21,6 +21,7 @@ const Profile = () => {
     if (!auth.user) {
       router.replace("/login")
     } else {null}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.user])
   
 
