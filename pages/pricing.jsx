@@ -1,9 +1,9 @@
 import React from 'react'
 
-const about = () => {
+const Pricing = () => {
   return (
     <div>about</div>
   )
 }
 
-export default about
+export default Pricing
