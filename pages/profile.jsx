@@ -3,11 +3,15 @@ import { useUserAuth, onAuthStateChanged } from "../context/UserAuthContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import firebase from '../firebase/firebaseApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { createCheckoutSession } from "../stripe/createCheckoutSession";
 
 const Profile = () => {
   const { user, logOut } = useUserAuth();
   const auth = useUserAuth();
   const router = useRouter()
+  
 
 
   const handleLogOut = async () => {
@@ -26,7 +30,6 @@ const Profile = () => {
   }, [auth.user])
   
 
-
   return (
     <div className="pt-36 w-full flex flex-col">
       <div>
@@ -35,9 +38,14 @@ const Profile = () => {
      <h1 className="text-center">{user?.displayName}</h1>
      <h1 className="text-center">{user?.name}</h1>
      <h1 className="text-center">{user?.email}</h1>
+    
+      <button onClick={() => createCheckoutSession(user.uid)}>
+        Upgrade to premium
+      </button>
+    
 
       <button
-        className="mx-80 content-center text-xl bg-[#BF202F] text-white py-3 px-3 rounded-lg hover:scale-110 ease-in duration-300"
+        className="text-xl w-full bg-[#BF202F] text-white py-3 rounded-lg hover:scale-110 ease-in duration-300"
         onClick={handleLogOut}
       >
         Logout
