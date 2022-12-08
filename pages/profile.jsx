@@ -6,6 +6,8 @@ import Image from "next/image";
 import firebase from '../firebase/firebaseApp'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { createCheckoutSession } from "../stripe/createCheckoutSession";
+import { createCheckoutSessionStandard } from "../stripe/createCheckoutSessionStandard";
+
 
 const Profile = () => {
   const { user, logOut } = useUserAuth();
@@ -36,13 +38,14 @@ const Profile = () => {
         <h1 className="text-center text-6xl font-bold">Hello Welcome</h1>
       </div>
      <h1 className="text-center">{user?.displayName}</h1>
-     <h1 className="text-center">{user?.name}</h1>
      <h1 className="text-center">{user?.email}</h1>
     
       <button onClick={() => createCheckoutSession(user.uid)}>
-        Upgrade to premium
+        Upgrade to premium package
       </button>
-    
+      <button onClick={() => createCheckoutSessionStandard(user.uid)}>
+        Upgrade to standard package
+      </button>
 
       <button
         className="text-xl w-full bg-[#BF202F] text-white py-3 rounded-lg hover:scale-110 ease-in duration-300"

@@ -45,6 +45,7 @@ const Login = () => {
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Log in to <br className="md:hidden"></br> Your Account
             </h2>
+            <p className="mt-6 text-center text-sm font-bold tracking-tight text-gray-800">First time users must confirm your email address.</p>
             {error && <Alert variant="danger">{error}</Alert>}
           </div>
 

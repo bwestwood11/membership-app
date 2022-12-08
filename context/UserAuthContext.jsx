@@ -38,9 +38,15 @@ export function UserAuthContextProvider({children}) {
         return sendPasswordResetEmail(auth, email );
     }
 
+    function verifyEmail() {
+        return sendEmailVerification(auth.currentUser);
+    }
+
+  
 useEffect(() => {
    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
+      
     });
     return () => {
         unsubscribe();
@@ -48,7 +54,7 @@ useEffect(() => {
 }, []);
 
     return (
-        <userAuthContext.Provider value={{ user, signUp, logIn, logOut, googleSignIn, forgotPassword }}>
+        <userAuthContext.Provider value={{ user, signUp, logIn, logOut, googleSignIn, forgotPassword, verifyEmail }}>
             {children}
             </userAuthContext.Provider> )
 }

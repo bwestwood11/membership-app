@@ -8,10 +8,8 @@ import Image from "next/image";
 import GoogleButton from "react-google-button";
 import { useRouter } from "next/router";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { db } from '../firebase/firebaseApp'
+import { db } from "../firebase/firebaseApp";
 import { collection, addDoc } from "firebase/firestore";
-
-
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -20,30 +18,34 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const { signUp, googleSignIn } = useUserAuth();
+  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } =
+    useUserAuth();
   const router = useRouter();
+  const auth = useUserAuth();
 
   const usersCollectionRef = collection(db, "users");
 
   const createUser = async () => {
-    await addDoc(usersCollectionRef, { username: name, email: email, password: password})
-    console.log(createUser)
-  }
- 
+    await addDoc(usersCollectionRef, {
+      username: name,
+      email: email,
+      password: password,
+    });
+    console.log(createUser);
+  };
 
   // Function that will handle sign up to Firebase Email and Password
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      const userCredentials = await signUp(email, password, username);
-      router.push("/login"); 
+      const userCredentials = await signUp(email, password);
+      const verifyEmailAddress = await verifyEmail(auth.user);
+      router.push("/login");
     } catch (err) {
       setError(err.message);
     }
   };
- 
-  
 
   // Function that will handle Google sign in Firebase
   const handleGoogleSignIn = async (e) => {
@@ -196,7 +198,7 @@ const Signup = () => {
                 </div>
                 <div>
                   <button
-                  onClick={createUser}
+                    onClick={createUser}
                     type="submit"
                     disabled={!isValid}
                     className="flex cursor-pointer w-full justify-center rounded-md border border-transparent bg-[#BF202F] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
