@@ -18,8 +18,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } =
-    useUserAuth();
+  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } = useUserAuth();
   const router = useRouter();
   const auth = useUserAuth();
 
@@ -27,7 +26,7 @@ const Signup = () => {
 
   const createUser = async () => {
     await addDoc(usersCollectionRef, {
-      username: name,
+      displayName: name,
       email: email,
       password: password,
     });
