@@ -10,12 +10,12 @@ import {
     sendEmailVerification
 } from 'firebase/auth';
 import { auth } from '../firebase/firebaseApp'
-import { app, database } from '../firebase/firebaseApp'
+import { app, db } from '../firebase/firebaseApp'
 
 const userAuthContext = createContext({});
 
 export function UserAuthContextProvider({children}) {
- const [user, setUser] = useState({})
+ const [currentUser, setUser] = useState({})
 
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -45,6 +45,7 @@ export function UserAuthContextProvider({children}) {
   
 useEffect(() => {
    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    console.log(currentUser)
         setUser(currentUser); 
       
     });
@@ -54,7 +55,7 @@ useEffect(() => {
 }, []);
 
     return (
-        <userAuthContext.Provider value={{ user, signUp, logIn, logOut, googleSignIn, forgotPassword, verifyEmail }}>
+        <userAuthContext.Provider value={{ currentUser, signUp, logIn, logOut, googleSignIn, forgotPassword, verifyEmail }}>
             {children}
             </userAuthContext.Provider> )
 }

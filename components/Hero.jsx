@@ -9,14 +9,14 @@ return (
       <div className="flex flex-col px-32 md:flex-row space-x-12 w-full items-center">
         <div className="basis-1/2">
           <h1 className="text-4xl text-white font-bold text-left md:text-5xl 2xl:text-8xl font-robotoBold">
-            Join the{" "}
+            Join The{" "}
           </h1>
           <h1 className="text-6xl md:text-5xl font-bold text-black pt-3 text-left 2xl:text-8xl font-robotoBold leading-tight">
             Appliance Plug Family
           </h1>
           <div className="pt-4">
             <p className="text-left text-[#BF202F] font-bold pt-4 font-robotoBold xl:text-2xl">
-              Become a member today to experience what the Appliance Plug has to offer.
+              Our Plug Shield Program is the best in the business. Become a member today so you have a peace of mind tomorrow.
             </p>
           </div>
           <div className="md:flex md:pt-12">

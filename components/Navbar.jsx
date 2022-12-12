@@ -12,7 +12,7 @@ const Navbar = () => {
     setNav(!nav);
   };
 
-  const { user, logOut } = useUserAuth();
+  const { currentUser, logOut } = useUserAuth();
 
   const handleLogOut = async () => {
     try {
@@ -55,7 +55,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          {user ? (
+          {currentUser ? (
             <button
               onClick={handleLogOut}
               className="hidden md:flex mr-10 text-xl bg-[#BF202F] text-white py-3 px-3 rounded-lg hover:scale-110 ease-in duration-300"
@@ -136,7 +136,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="py-16 flex justify-between">
-            {user ? <button onClick={handleLogOut} className="rounded-lg bg-[#BF202F] text-white my-4 px-4 py-2 hover:scale-110 ease-in duration-300">
+            {currentUser ? <button onClick={handleLogOut} className="rounded-lg bg-[#BF202F] text-white my-4 px-4 py-2 hover:scale-110 ease-in duration-300">
               Log Out
             </button>: <Link href="/login">
               <button

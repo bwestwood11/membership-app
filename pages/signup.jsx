@@ -47,7 +47,7 @@ const Signup = () => {
   };
 
   // Function that will handle Google sign in Firebase
-  const handleGoogleSignIn = async (e) => {
+  const handleGoogleSignIn = async (e, createUser) => {
     e.preventDefault();
 
     try {

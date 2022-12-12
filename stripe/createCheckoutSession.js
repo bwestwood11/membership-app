@@ -18,7 +18,7 @@ export async function createCheckoutSession(uid) {
 
     if (sessionId) {
       const stripe = await getStripe();
-
+    console.log(sessionId)
       stripe.redirectToCheckout({ sessionId });
     } 
   })
