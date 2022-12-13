@@ -6,6 +6,9 @@ import { useRouter } from "next/router";
 import { useUserAuth } from "../context/UserAuthContext";
 import Link from "next/link";
 import { Alert } from "react-bootstrap";
+import { db } from "../firebase/firebaseApp";
+import { collection, addDoc } from "firebase/firestore";
+import { useEffect } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +16,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { logIn, googleSignIn } = useUserAuth();
   const router = useRouter();
+  const auth = useUserAuth();
+  const { currentUser } = auth
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,11 +35,25 @@ const Login = () => {
 
     try {
       await googleSignIn();
+      await createGoogleUser();
       router.push("/profile");
     } catch (err) {
       setError(err.message);
     }
   };
+
+
+ 
+ const usersCollectionGoogleRef = collection(db, "users");
+  const createGoogleUser = async () => {
+    await addDoc(usersCollectionGoogleRef, {
+      displayName: currentUser.displayName,
+      email: currentUser.email,
+      photoURL: currentUser.photoURL,
+    });
+    console.log(createGoogleUser);
+   }
+ 
 
   return (
     <>

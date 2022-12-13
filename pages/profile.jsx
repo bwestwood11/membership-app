@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useUserAuth, onAuthStateChanged } from "../context/UserAuthContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -10,7 +10,6 @@ import { createCheckoutSessionStandard } from "../stripe/createCheckoutSessionSt
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from '../firebase/firebaseApp'
 import usePremiumStatus from "../stripe/usePremiumStatus";
-
 
 const Profile = () => {
   const { currentUser, logOut } = useUserAuth();
@@ -31,13 +30,8 @@ const Profile = () => {
       router.replace("/loginerror");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.user]);
+  }, [auth.currentUser]);
  
-let premiumUser = collection(db, `users/currentUser.uid/subscriptions`)
-     const q = query(premiumUser, where("status", "==", ["trailing", "active"]))
-    onSnapshot(q, async (snapshot) => {
-      const doc = snapshot.docs
-    })
 
   return (
     <div className="pt-36 w-full flex flex-col items-center">
@@ -66,7 +60,12 @@ let premiumUser = collection(db, `users/currentUser.uid/subscriptions`)
         Logout
       </button>
        
-      {premiumStatus ? <h1>Hi Premium User</h1>: <h1>Become premium today</h1>}
+      {premiumStatus ? <a href="https://billing.stripe.com/p/login/test_fZebJx6J4gCh5CE8ww">
+        <button className="rounded-lg bg-[#BF202F] text-white my-4 px-4 py-2">Manage Billing</button>
+        </a>:
+         <h1>Become premium today</h1>}
+               
+
     </div>
   );
 };

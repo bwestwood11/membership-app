@@ -21,9 +21,36 @@ const Signup = () => {
   const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } = useUserAuth();
   const router = useRouter();
   const auth = useUserAuth();
+  const { currentUser } = auth
 
-  const usersCollectionRef = collection(db, "users");
+ 
+ // Function that will handle Google sign in Firebase
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
 
+    try {
+      await googleSignIn();
+      await createGoogleUser()
+      router.push("/profile");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  
+ const usersCollectionGoogleRef = collection(db, "users");
+  const createGoogleUser = async () => {
+    await addDoc(usersCollectionGoogleRef, {
+      displayName: currentUser.displayName,
+      email: currentUser.email,
+      photoURL: currentUser.photoURL,
+    });
+    console.log(createGoogleUser);
+  };
+
+
+// Create user data for sign-in form to send to firebase 
+ const usersCollectionRef = collection(db, "users");
   const createUser = async () => {
     await addDoc(usersCollectionRef, {
       displayName: name,
@@ -33,31 +60,21 @@ const Signup = () => {
     console.log(createUser);
   };
 
+
   // Function that will handle sign up to Firebase Email and Password
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       const userCredentials = await signUp(email, password);
-      const verifyEmailAddress = await verifyEmail(auth.user);
+      const verifyEmailAddress = await verifyEmail(auth.currentUser);
       router.push("/login");
     } catch (err) {
       setError(err.message);
     }
   };
 
-  // Function that will handle Google sign in Firebase
-  const handleGoogleSignIn = async (e, createUser) => {
-    e.preventDefault();
-
-    try {
-      await googleSignIn();
-      router.push("/profile");
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
+ 
   // Checking to see if passwords match to either disable or enable sign up button
   useEffect(() => {
     if (password === cpassword) {

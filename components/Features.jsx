@@ -10,7 +10,7 @@ import { AiFillYoutube, AiFillFire } from "react-icons/ai";
 
 const features = [
   {
-    name: "Dryer Vent Cleaning Once a Year",
+    name: "Free Dryer Vent Cleaning Once a Year",
     description:
       "Clogged dryer vents are one of the leading causes of house fires. These fires cause an estimated $238 million in property damage yearly.",
     icon: AiFillFire,
@@ -22,7 +22,7 @@ const features = [
     icon: AiFillYoutube,
   },
   {
-    name: "Simple Queues",
+    name: "Appliance diagnostic calls at no cost to you!",
     description:
       "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
     icon: ArrowPathIcon,
@@ -57,7 +57,7 @@ export default function Example() {
         </p>
         <p className="mx-auto mt-5 max-w-prose text-xl text-white">
           Below are some of the benefits you will receive when you become a
-          monthly subscriber to one of the four subscription plans that is
+          monthly subscriber to one of our three subscription plans that is
           offered.
         </p>
         <div className="mt-20">

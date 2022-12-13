@@ -69,8 +69,11 @@ export default function Example() {
   const auth = useUserAuth();
   const router = useRouter();
 
-  const handleYearlyPrice = () => {
-        setActiveYear(!activeYear)
+  const handleYearlyPriceTrue = () => {
+        setActiveYear(true)
+  }
+  const handleYearlyPriceFalse = () => {
+        setActiveYear(false)
   }
 
   return (
@@ -84,13 +87,13 @@ export default function Example() {
             Check out our three membership options we offer here. If you have any questions, please contact us.
           </p>
           <div className="relative mt-6 flex self-center rounded-lg bg-gray-100 p-0.5 sm:mt-8">
-            <button onClick={handleYearlyPrice}
+            <button onClick={handleYearlyPriceFalse}
               type="button"
               className="relative w-1/2 whitespace-nowrap rounded-md border-gray-200 bg-white py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"
             >
               Monthly billing
             </button>
-            <button onClick={handleYearlyPrice}
+            <button onClick={handleYearlyPriceTrue}
               type="button"
               className={!activeYear ? "relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-transparent py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8": "relative bg-white border-gray-200 ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-transparent py-2 text-sm font-medium text-gray-900 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"} 
             >
