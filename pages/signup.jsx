@@ -18,39 +18,38 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } = useUserAuth();
+  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } =
+    useUserAuth();
   const router = useRouter();
   const auth = useUserAuth();
-  const { currentUser } = auth
+  const { currentUser } = auth;
 
- 
- // Function that will handle Google sign in Firebase
+  // Function that will handle Google sign in Firebase
   const handleGoogleSignIn = async (e) => {
-    e.preventDefault();
-
+    e.preventDefault()
     try {
       await googleSignIn();
-      await createGoogleUser()
+      await createGoogleUser();
       router.push("/profile");
     } catch (err) {
       setError(err.message);
     }
   };
 
-  
- const usersCollectionGoogleRef = collection(db, "users");
-  const createGoogleUser = async () => {
+
+
+  const usersCollectionGoogleRef = collection(db, "users");
+  const createGoogleUser = async (e) => {
     await addDoc(usersCollectionGoogleRef, {
-      displayName: currentUser.displayName,
-      email: currentUser.email,
-      photoURL: currentUser.photoURL,
+      displayName: currentUser?.displayName || null,
+      email: currentUser?.email || null,
+      photoURL: currentUser?.photoURL || null,
     });
     console.log(createGoogleUser);
   };
 
-
-// Create user data for sign-in form to send to firebase 
- const usersCollectionRef = collection(db, "users");
+  // Create user data for sign-in form to send to firebase
+  const usersCollectionRef = collection(db, "users");
   const createUser = async () => {
     await addDoc(usersCollectionRef, {
       displayName: name,
@@ -59,7 +58,6 @@ const Signup = () => {
     });
     console.log(createUser);
   };
-
 
   // Function that will handle sign up to Firebase Email and Password
   const handleSubmit = async (e) => {
@@ -74,7 +72,6 @@ const Signup = () => {
     }
   };
 
- 
   // Checking to see if passwords match to either disable or enable sign up button
   useEffect(() => {
     if (password === cpassword) {

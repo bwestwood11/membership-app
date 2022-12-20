@@ -24,6 +24,7 @@ const Login = () => {
     setError("");
     try {
       const userCredentials = await logIn(email, password);
+      
       router.push("/profile");
     } catch (err) {
       setError(err.message);
@@ -47,9 +48,9 @@ const Login = () => {
  const usersCollectionGoogleRef = collection(db, "users");
   const createGoogleUser = async () => {
     await addDoc(usersCollectionGoogleRef, {
-      displayName: currentUser.displayName,
-      email: currentUser.email,
-      photoURL: currentUser.photoURL,
+      displayName: currentUser?.displayName,
+      email: currentUser?.email,
+      photoURL: currentUser?.photoURL
     });
     console.log(createGoogleUser);
    }

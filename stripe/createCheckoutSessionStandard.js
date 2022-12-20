@@ -1,12 +1,14 @@
 import { db } from "../firebase/firebaseApp";
-import {collection, doc, addDoc, onSnapshot} from 'firebase/firestore';
-import { firestore } from "firebase/firestore";
+import {collection, doc, addDoc, onSnapshot, where, query, getDocs} from 'firebase/firestore';
 import getStripe from "./initializeStripe"
 
-export async function createCheckoutSessionStandard(uid) {
+
+
+
+export async function CreateCheckoutSessionStandard(uid) {
   let checkoutRef = collection(db, `users/${uid}/checkout_sessions`);
   const checkoutSessionRef = await addDoc(checkoutRef, {
-      price: 'price_1MCAgCGIwTaVwo32PDGZtg1d',
+      price: priceId,
       // This can be removed if you don't want promo codes
       allow_promotion_codes: true,
       success_url: window.location.origin,
@@ -18,7 +20,7 @@ export async function createCheckoutSessionStandard(uid) {
 
     if (sessionId) {
       const stripe = await getStripe();
-
+       
       stripe.redirectToCheckout({ sessionId });
     } 
   })

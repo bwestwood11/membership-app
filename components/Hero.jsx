@@ -41,7 +41,7 @@ return (
             className="invisible md:visible border-8 rounded-lg hover:scale-110 ease-in duration-300"
             src={hero}
             alt="/"
-          />
+              />
         </div>
       </div>
     </section>

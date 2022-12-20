@@ -1,5 +1,5 @@
 import { db } from "../firebase/firebaseApp";
-import {collection, doc, addDoc, onSnapshot} from 'firebase/firestore';
+import {collection, doc, addDoc, where, getDocs, query, onSnapshot} from 'firebase/firestore';
 import { firestore } from "firebase/firestore";
 import getStripe from "./initializeStripe"
 
