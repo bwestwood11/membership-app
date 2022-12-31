@@ -24,7 +24,7 @@ const Stats = () => {
             <dd className="order-1 text-5xl font-bold tracking-tight text-black">2 Million+</dd>
           </div>
           <div className="mt-10 flex flex-col sm:mt-0">
-            <dt className="order-2 mt-2 text-lg font-medium leading-6 text-black">Combined Industry Experience</dt>
+            <dt className="order-2 mt-2 text-lg font-medium leading-6 text-black">Years Combined Industry Experience</dt>
             <dd className="order-1 text-5xl font-bold tracking-tight text-black">20+</dd>
           </div>
         </dl>

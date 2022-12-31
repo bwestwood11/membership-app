@@ -10,39 +10,39 @@ import { AiFillYoutube, AiFillFire } from "react-icons/ai";
 
 const features = [
   {
-    name: "Free Dryer Vent Cleaning Once a Year",
+    name: "Dryer Vent Cleaning Once a Year",
     description:
       "Clogged dryer vents are one of the leading causes of house fires. These fires cause an estimated $238 million in property damage yearly.",
     icon: AiFillFire,
   },
   {
-    name: "Private YouTube Live Session Once a Week",
+    name: "Loaner Program",
     description:
-      "You will have exclusive access to member only YouTube live sessions where we will answer any appliance related questions.",
+      "Never be without a working appliance. We will repair your appliance or provide you with a loaner while we get your's up and running.",
     icon: AiFillYoutube,
   },
   {
-    name: "Appliance diagnostic calls at no cost to you!",
+    name: "Unlimited Appliance Diagnostic Calls!",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
+      "We are here for you when you need us and our committed that your appliances are always working!",
     icon: ArrowPathIcon,
   },
   {
-    name: "Loaner Program",
+    name: "Extended Product Protection",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
+      "Receive an extended warranty on any new appliance purchase.",
     icon: ShieldCheckIcon,
   },
   {
-    name: "Powerful API",
+    name: "Expedited Delivery Service",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
+      "We will provide an even faster delivery! Guaranteed 2 day delivery and standard installation including haul away.",
     icon: CogIcon,
   },
   {
-    name: "Database Backups",
+    name: "We're Always Here For You",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
+      "Receive access to dedicated phone and chat teams.",
     icon: ServerIcon,
   },
 ];
