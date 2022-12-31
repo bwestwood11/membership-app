@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import hero from '../public/images/heroimg.png'
+import ReactPlayer from 'react-player';
 
 const Hero = () => {
 return (

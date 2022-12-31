@@ -13,7 +13,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
@@ -28,8 +28,7 @@ const Signup = () => {
   const handleGoogleSignIn = async (e) => {
     e.preventDefault()
     try {
-      await googleSignIn();
-      await createGoogleUser();
+      await googleSignIn()
       router.push("/profile");
     } catch (err) {
       setError(err.message);
@@ -52,7 +51,7 @@ const Signup = () => {
   const usersCollectionRef = collection(db, "users");
   const createUser = async () => {
     await addDoc(usersCollectionRef, {
-      displayName: name,
+      displayName: displayName,
       email: email,
       password: password,
     });
@@ -120,13 +119,13 @@ const Signup = () => {
                   </label>
                   <div className="mt-1">
                     <input
-                      id="username"
-                      name="username"
+                      id="displayName"
+                      name="displayName"
                       type="text"
-                      value={name}
-                      autoComplete="username"
+                      value={displayName}
+                      autoComplete="displayName"
                       required
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => setDisplayName(e.target.value)}
                       className="block h-14 w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>

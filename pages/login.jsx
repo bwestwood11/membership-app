@@ -36,7 +36,6 @@ const Login = () => {
 
     try {
       await googleSignIn();
-      await createGoogleUser();
       router.push("/profile");
     } catch (err) {
       setError(err.message);

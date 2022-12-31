@@ -56,12 +56,19 @@ const Navbar = () => {
         </div>
         <div>
           {currentUser ? (
+            <div className="flex flex-row">
             <button
               onClick={handleLogOut}
               className="hidden md:flex mr-10 text-xl bg-[#BF202F] text-white py-3 px-3 rounded-lg hover:scale-110 ease-in duration-300"
             >
               Logout
             </button>
+            <a href="https://billing.stripe.com/p/login/test_fZebJx6J4gCh5CE8ww">
+            <button className="hidden md:flex mr-10 text-xl bg-[#BF202F] text-white py-3 px-3 rounded-lg hover:scale-110 ease-in duration-300">
+               Manage Account
+            </button>
+            </a>
+            </div>
           ) : (
             <Link href="/login">
               <button className="hidden sm:flex mr-10 text-xl bg-[#BF202F] text-white py-3 px-3 rounded-lg hover:scale-110 ease-in duration-300">
