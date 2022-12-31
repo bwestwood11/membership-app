@@ -14,33 +14,30 @@ const tiers = [
     includedFeatures: [
       "Unlimited appliance diagnostics service calls for $49 per service call. Non-members pay $99.",
       "10% off labor for any appliance repair.",
-      "Additional 5% off any appliance purchase",
       "25% off dryer vent cleaning service.",
       "Up to 36 months of product protection on new appliance purchases.",
       "Free refrigerator water filter replacement with purchase of water filter.",
       "Access to dedicated phone and chat teams.",
       "Refrigerator, washer, dryer, or range loaner for $150.",
       "Monthly newsletter written by industry experts.",
-
     ],
   },
   {
     name: "Premium Package",
     href: "/profile",
     priceMonthly: 19.99,
-    priceYearly: 179.99,
+    priceYearly: 199.99,
     description: "All benefits require an active subscription.",
     includedFeatures: [
-      "Free dryer vent cleaning service per year.",
       "Free unlimited appliance diagnostics service calls. Non-member pay $99.",
-      "20% off labor for any appliance repair.",
-      "Additional 5% off any appliance purchase.",
+      "10% off labor for any appliance repair.",
+      "Free dryer vent cleaning service per year.",
       "Up to 48 months of product protection on new appliance purchases.",
-      "Free 2-day delivery and standard installation including free haul away.",
       "Free refrigerator water filter replacement with purchase of water filter.",
       "Access to dedicated phone and chat teams.",
       "Free refrigerator, washer, dryer or range loaner.",
       "Monthly newsletter written by industry experts.",
+      "Free 2-day delivery and standard installation including free haul away.",
     ],
   },
   {
@@ -60,21 +57,20 @@ const tiers = [
       "Help with appliance business start-up",
     ],
   },
-
 ];
 
 export default function Example() {
- const [activeYear, setActiveYear] = useState(false)
+  const [activeYear, setActiveYear] = useState(false);
   const { currentUser } = useUserAuth();
   const auth = useUserAuth();
   const router = useRouter();
 
   const handleYearlyPriceTrue = () => {
-        setActiveYear(true)
-  }
+    setActiveYear(true);
+  };
   const handleYearlyPriceFalse = () => {
-        setActiveYear(false)
-  }
+    setActiveYear(false);
+  };
 
   return (
     <div className="bg-gradient-to-t from-[#BF202F]">
@@ -84,18 +80,25 @@ export default function Example() {
             Pricing Plans
           </h1>
           <p className="mt-5 text-xl text-gray-500 sm:text-center">
-            Check out our three membership options we offer here. If you have any questions, please contact us.
+            Check out our three membership options we offer here. If you have
+            any questions, please contact us.
           </p>
           <div className="relative mt-6 flex self-center rounded-lg bg-gray-100 p-0.5 sm:mt-8">
-            <button onClick={handleYearlyPriceFalse}
+            <button
+              onClick={handleYearlyPriceFalse}
               type="button"
               className="relative w-1/2 whitespace-nowrap rounded-md border-gray-200 bg-white py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"
             >
               Monthly billing
             </button>
-            <button onClick={handleYearlyPriceTrue}
+            <button
+              onClick={handleYearlyPriceTrue}
               type="button"
-              className={!activeYear ? "relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-transparent py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8": "relative bg-white border-gray-200 ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-transparent py-2 text-sm font-medium text-gray-900 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"} 
+              className={
+                !activeYear
+                  ? "relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-transparent py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"
+                  : "relative bg-white border-gray-200 ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-transparent py-2 text-sm font-medium text-gray-900 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"
+              }
             >
               Yearly billing
             </button>
@@ -114,10 +117,10 @@ export default function Example() {
                 <p className="mt-4 text-sm text-gray-500">{tier.description}</p>
                 <p className="mt-8">
                   <span className="text-4xl font-bold tracking-tight text-gray-900">
-                   {!activeYear ? tier.priceMonthly: tier.priceYearly}
+                    {!activeYear ? tier.priceMonthly : tier.priceYearly}
                   </span>{" "}
                   <span className="text-base font-medium text-gray-500">
-                    {!activeYear ?  "per month": "per year"}
+                    {!activeYear ? "per month" : "per year"}
                   </span>
                 </p>
                 <a

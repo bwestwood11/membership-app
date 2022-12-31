@@ -28,7 +28,7 @@ const features = [
     icon: ArrowPathIcon,
   },
   {
-    name: "Advanced Security",
+    name: "Loaner Program",
     description:
       "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
     icon: ShieldCheckIcon,

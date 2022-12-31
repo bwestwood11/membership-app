@@ -131,7 +131,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="relative h-100vh sm:h-screen pt-28 flex flex-col gap-8 p-20 w-full justify-center items-center">
+    <div className="relative pt-36 sm:h-screen pt-28 flex flex-col gap-8 p-20 w-full justify-center items-center">
       <h1 className="text-4xl font-bold">Hi {currentUser?.email} 👋</h1>
       <p className="font-semibold text-center ">
         Welcome to our membership program! We are so excited to have you join us

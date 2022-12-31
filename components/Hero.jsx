@@ -17,7 +17,7 @@ return (
           </h1>
           <div className="pt-4">
             <p className="text-left text-[#BF202F] font-bold pt-4 font-robotoBold xl:text-2xl">
-              Our Plug Shield Program is the best in the business. Become a member today so you have a peace of mind tomorrow.
+              Our Plug Shield Membership Program is the best in the business. Become a member today and have instant peace of mind.
             </p>
           </div>
           <div className="md:flex md:pt-12">
