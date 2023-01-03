@@ -135,11 +135,12 @@ const Navbar = () => {
                   Contact
                 </li>
               </Link>
+              {currentUser && 
               <Link href="/profile">
                 <li onClick={() => setNav(false)} className="py-4">
                   My Profile
                 </li>
-              </Link>
+              </Link> }
             </ul>
           </div>
           <div className="py-16 flex justify-between">

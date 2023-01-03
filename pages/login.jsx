@@ -14,62 +14,59 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-  const { logIn, googleSignIn } = useUserAuth();
+  const { logIn, googleSignIn, logOut } = useUserAuth();
   const router = useRouter();
   const auth = useUserAuth();
-  const { currentUser } = auth
+  const { currentUser } = auth;
 
+  //  Handle Log-in Submit when clicked
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    try {
-      const userCredentials = await logIn(email, password);
-      
-      router.push("/profile");
-    } catch (err) {
-      setError(err.message);
-    }
+    const userCredentials = await logIn(email, password);
+    router.push("/profile"); 
   };
 
+  
+  // Handle Google Sign-in when clicked
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
-
     try {
       await googleSignIn();
       router.push("/profile");
     } catch (err) {
       setError(err.message);
-    }
+    } 
   };
 
-
- 
- const usersCollectionGoogleRef = collection(db, "users");
+  //  Adding Google User Info to Firestore Database - Not currently working
+  const usersCollectionGoogleRef = collection(db, "users");
   const createGoogleUser = async () => {
     await addDoc(usersCollectionGoogleRef, {
       displayName: currentUser?.displayName,
       email: currentUser?.email,
-      photoURL: currentUser?.photoURL
+      photoURL: currentUser?.photoURL,
     });
     console.log(createGoogleUser);
-   }
- 
+  };
 
   return (
     <>
       <div className="bg-gradient-to-r from-slate-100 to-red-600 w-full h-full md:h-screen">
         <div className="flex min-h-full flex-col justify-center py-36 sm:px-6 lg:px-8 z-100">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            <Image className="mx-auto h-12 w-auto" src={logo} alt="/" />
+            <Image className="mx-auto h-24 w-auto" src={logo} alt="/" />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Log in to <br className="md:hidden"></br> Your Account
             </h2>
-            <p className="mt-6 text-center text-sm font-bold tracking-tight text-gray-800">First time users must confirm your email address.</p>
+            <p className="mt-6 text-center text-sm font-bold tracking-tight text-gray-800">
+              First time users must confirm your email address.
+            </p>
             {error && <Alert variant="danger">{error}</Alert>}
           </div>
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+              {/* Beginning of the login form */}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label

@@ -40,23 +40,7 @@ const tiers = [
       "2-day delivery and standard installation including haul away.",
     ],
   },
-  {
-    name: "Global Entrepreneur Package",
-    href: "/profile",
-    priceMonthly: 49.99,
-    priceYearly: 499.99,
-    description: "All benefits require an active subscription.",
-    includedFeatures: [
-      "Member-only weekly love stream.",
-      "Unlimited 1-on-1 chat.",
-      "Extra entry into global giveaways.",
-      "Private scheduled lunch with a tour of Tampa Bay.",
-      "Unlimited industry related support",
-      "Access to private content",
-      "Access to national buying group information",
-      "Help with appliance business start-up",
-    ],
-  },
+
 ];
 
 export default function Example() {
@@ -80,7 +64,7 @@ export default function Example() {
             Pricing Plans
           </h1>
           <p className="mt-5 text-xl text-gray-500 sm:text-center">
-            Check out our three membership options we offer here. If you have
+            Check out our membership options we offer here. If you have
             any questions, please contact us.
           </p>
           <div className="relative mt-6 flex self-center rounded-lg bg-gray-100 p-0.5 sm:mt-8">
@@ -104,7 +88,7 @@ export default function Example() {
             </button>
           </div>
         </div>
-        <div className="bg-white mt-12 space-y-4 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-3">
+        <div className="bg-white mt-12 space-y-4 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto lg:max-w-4xl xl:mx-0 xl:max-w-none">
           {tiers.map((tier) => (
             <div
               key={tier.name}

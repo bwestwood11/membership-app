@@ -18,7 +18,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, user } =
+  const { signUp, googleSignIn, sendEmailVerification, verifyEmail, logOut } =
     useUserAuth();
   const router = useRouter();
   const auth = useUserAuth();
@@ -26,16 +26,14 @@ const Signup = () => {
 
   // Function that will handle Google sign in Firebase
   const handleGoogleSignIn = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await googleSignIn()
+      await googleSignIn();
       router.push("/profile");
     } catch (err) {
       setError(err.message);
     }
   };
-
-
 
   const usersCollectionGoogleRef = collection(db, "users");
   const createGoogleUser = async (e) => {
@@ -68,7 +66,7 @@ const Signup = () => {
       router.push("/login");
     } catch (err) {
       setError(err.message);
-    }
+    } 
   };
 
   // Checking to see if passwords match to either disable or enable sign up button
@@ -86,6 +84,7 @@ const Signup = () => {
   const handlePasswordClick = () => {
     setPasswordEye(!passwordEye);
   };
+
   // handle confirm password eye
   const [confirmPasswordEye, setConfirmPasswordEye] = useState(false);
 

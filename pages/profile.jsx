@@ -22,7 +22,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const Profile = () => {
   const { currentUser, logOut } = useUserAuth();
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [subscription, setSubscription] = useState(null);
   const [products, setProducts] = useState([]);
   const auth = useUserAuth();
@@ -104,7 +104,9 @@ const Profile = () => {
   console.log(products);
   console.log(currentUser);
 
+
   const loadCheckout = async (priceId) => {
+    setIsLoading(true)
     let docRef = await collection(
       db,
       `users/${currentUser.uid}/checkout_sessions`
@@ -127,11 +129,13 @@ const Profile = () => {
         );
         stripe.redirectToCheckout({ sessionId });
       }
+    
     });
   };
 
+
   return (
-    <div className="relative pt-36 sm:h-screen pt-28 flex flex-col gap-8 p-20 w-full justify-center items-center">
+   <div className="relative pt-36 sm:h-screen flex flex-col gap-8 p-20 w-full justify-center items-center">
       <h1 className="text-4xl font-bold">Hi {currentUser?.email} 👋</h1>
       <p className="font-semibold text-center ">
         Welcome to our membership program! We are so excited to have you join us
@@ -164,8 +168,8 @@ const Profile = () => {
           ?.toLowerCase()
           .includes(subscription?.role);
         return (
-          <section key={productId} className="flex items-center">
-            <div className="container px-5">
+           <section key={productId} className="flex items-center">
+            {isLoading ? <Loader /> :<div className="container px-5">
               <div className="text-center">
                 <h5 className="text-xl font-bold pb-4 text-center">
                   {productData.name}
@@ -173,7 +177,7 @@ const Profile = () => {
                 <h6 className="text-lg pb-2 text-center">
                   {productData.description}
                 </h6>
-              </div>
+              
               <button
                 className={
                   isCurrentPackage
@@ -188,7 +192,8 @@ const Profile = () => {
                   ? "Current Package"
                   : `Subscribe to ${productData.name}`}
               </button>
-            </div>
+              </div>
+            </div>}
           </section>
         );
       })}
