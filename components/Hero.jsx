@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import hero from '../public/images/heroimg.png'
-import ReactPlayer from 'react-player';
+import YouTubeEmbed from "./YouTubeEmbed";
 
 const Hero = () => {
 return (
@@ -38,11 +38,12 @@ return (
           </div>
         </div>
         <div className="basis-1/2 py-12">
-          <Image
+          {/* <Image
             className="invisible md:visible border-8 rounded-lg hover:scale-110 ease-in duration-300"
             src={hero}
             alt="/"
-              />
+              /> */}      
+              <YouTubeEmbed embedId='twMiDcg8QwU'/>  
         </div>
       </div>
     </section>

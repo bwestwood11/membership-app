@@ -96,6 +96,7 @@ const Profile = () => {
       }
 
       setProducts(products);
+      
     };
 
     getActiveProducts();
@@ -106,7 +107,6 @@ const Profile = () => {
 
 
   const loadCheckout = async (priceId) => {
-    setIsLoading(true)
     let docRef = await collection(
       db,
       `users/${currentUser.uid}/checkout_sessions`
@@ -132,6 +132,7 @@ const Profile = () => {
     
     });
   };
+
 
 
   return (
@@ -169,7 +170,7 @@ const Profile = () => {
           .includes(subscription?.role);
         return (
            <section key={productId} className="flex items-center">
-            {isLoading ? <Loader /> :<div className="container px-5">
+            <div className="container px-5">
               <div className="text-center">
                 <h5 className="text-xl font-bold pb-4 text-center">
                   {productData.name}
@@ -186,6 +187,7 @@ const Profile = () => {
                 }
                 onClick={() =>
                   !isCurrentPackage && loadCheckout(productData.prices.priceId)
+                  
                 }
               >
                 {isCurrentPackage
@@ -193,7 +195,7 @@ const Profile = () => {
                   : `Subscribe to ${productData.name}`}
               </button>
               </div>
-            </div>}
+            </div>
           </section>
         );
       })}
