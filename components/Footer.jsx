@@ -17,8 +17,8 @@ const Footer = () => {
             <p>
               <a href="mailto:info@example.com" className="text-white hover:text-gray-400">info@TheAppliancePlug.com</a>
             </p>
-            <Link href='/TermsOfService' className='hover:text-gray-400 cursor-pointer'><p>Terms of Services</p></Link>
-            <Link href='/PrivacyPolicy' className='hover:text-gray-400 cursor-pointer'><p>Privacy Policy</p></Link>
+            <Link href='/' className='hover:text-gray-400 cursor-pointer'><p>Terms of Services</p></Link>
+            <Link href='/' className='hover:text-gray-400 cursor-pointer'><p>Privacy Policy</p></Link>
           </div>
           <div className="w-full md:w-1/3 text-center md:text-left pt-8">
             <h5 className="mb-4 font-bold">Follow Us</h5>
